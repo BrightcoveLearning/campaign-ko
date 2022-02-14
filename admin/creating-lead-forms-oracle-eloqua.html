@@ -1,675 +1,80 @@
-﻿<!doctype html>
-<html lang="ko">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  
-  <title>오라클 Eloqua에서 가망 고객 화면 생성</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">    <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
-  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
-  <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
-  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
-  <script src="/assets/js/sajari-head.js"></script>
-</head>
-
-<body class="body">
-
-<header>
-  <div class="div-header">
-    <a href="/"><span class="product-logo" style="font-family:'Balto Web','Public Sans';font-size:2em;font-weight:bold;">브라이트코브 캠페인<sup>™</sup></span></a>
-<!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">언어 선택</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
-
-<script>
-/* <![CDATA[ */
-function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
-/* ]]> */
-</script>
-
-    
-
-
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="지원"/> 고객 지원 문의</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="시스템 상태"/> 시스템 상태</a></span> <br/>
-    
-  </div>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">홈</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/admin/">계정 관리</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">오라클 Eloqua에서 가망 고객 화면 생성</li>
-    </ol>
-  </nav>
-</header>
-<div class="container">
-    <div class="row">
-      <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-					<option value="">기타 브라이트코브 문서</option>
-					
-						
-							<option value="https://support.brightcove.com">설명서 홈</option>
-						
-					
-						
-							<option value="https://audience.support.brightcove.com">브라이트코브 대상</option>
-						
-					
-						
-							<option value="https://beacon.support.brightcove.com">브라이트코브 비콘</option>
-						
-					
-						
-							<option value="https://campaign.support.brightcove.com">브라이트코브 캠페인</option>
-						
-					
-						
-							<option value="https://engage.support.brightcove.com">브라이트코브 참여</option>
-						
-					
-						
-							<option value="https://live.support.brightcove.com">Brightcove Live</option>
-						
-					
-						
-							<option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-						
-					
-						
-							<option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-						
-					
-						
-							<option value="https://social.support.brightcove.com">브라이트코브 소셜</option>
-						
-					
-						
-							<option value="https://studio.support.brightcove.com">비디오 클라우드 스튜디오</option>
-						
-					
-						
-							<option value="https://player.support.brightcove.com">브라이트코브 플레이어 개발</option>
-						
-					
-						
-							<option value="https://apis.support.brightcove.com">비디오 클라우드 플랫폼 API</option>
-						
-					
-						
-							<option value="https://sdks.support.brightcove.com">비디오 클라우드 디바이스 SDK</option>
-						
-					
-						
-							<option value="https://integrations.support.brightcove.com">통합 및 CMS 커넥터</option>
-						
-					
-						
-							<option value="https://general.support.brightcove.com">비디오 클라우드 일반 정보</option>
-						
-					
-						
-							<option value="https://zencoder.support.brightcove.com">Zencoder</option>
-						
-					
-				</select>
-        <nav class="sidenav" id="side_nav">
-          
-            
-            <h5><a href="/index.html">홈</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/get-started/index.html">시작하기 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/get-started/brightcove-campaign-training-videos.html">캠페인 교육 동영상</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/getting-started-brightcove-campaign.html">브라이트코브 캠페인 시작하기</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/getting-started-brightcove-campaign-trial.html">브라이트코브 캠페인 평가판 시작하기</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/overview-video-content-types.html">비디오 콘텐츠 유형 개요</a></li>
-                  
-                
-                  
-                    <li><a href="/get-started/uploading-publishing-your-first-video.html">첫 번째 비디오 업로드 및 게시</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/videos/index.html">비디오 관리 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/videos/adding-text-tracks-to-a-video.html">텍스트 트랙 추가</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/capturing-poster-and-thumbnail-images.html">포스터 및 축소판 이미지 캡처</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/driving-video-views-email.html">전자 메일을 통한 비디오 보기 유도</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/editing-video-properties.html">비디오 속성 편집</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/managing-videos.html">비디오 관리</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/publishing-videos.html">비디오 게시하기</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/how-to-search-for-videos.html">동영상 검색</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/uploading-poster-and-thumbnail-images.html">포스터 및 썸네일 이미지 업로드</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/uploading-videos.html">동영상 업로드</a></li>
-                  
-                
-                  
-                    <li><a href="/videos/working-with-shared-videos.html">공유 비디오 작업하기</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/dashboard/index.html">대시보드 검토 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/dashboard/dashboard-overview.html">대시보드 개요</a></li>
-                  
-                
-                  
-                    <li><a href="/dashboard/reviewing-adv-dashboard.html">고급 대시보드 검토</a></li>
-                  
-                
-                  
-                    <li><a href="/dashboard/reviewing-basic-dashboard.html">기본 대시보드 검토</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/analytics/index.html">애널리틱스 검토 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/analytics/how-vbs-calculated.html">비디오 벤치마크 점수 계산 방법</a></li>
-                  
-                
-                  
-                    <li><a href="/analytics/reviewing-video-analytics.html">비디오 분석 검토</a></li>
-                  
-                
-                  
-                    <li><a href="/analytics/using-hud.html">헤드업 디스플레이 크롬 확장 프로그램 사용</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/admin/index.html">계정 관리 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/admin/configuring-adobe-analytics-event-tracking.html">어도비 분석 구성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/configuring-google-analytics-event-tracking.html">구글 웹 로그 분석 구성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/configuring-map-connections.html">MAP 연결 구성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-hubspot-client-side-api.html">HubSpot에 연결 (클라이언트 측 API)</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-hubspot-rest-api.html">허브스팟에 연결 (REST API)</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-marketo-munchkin.html">마르케토 연결 (먼치킨)</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-marketo-rest-api.html">마케토 (REST API) 에 연결</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-oracle-eloqua.html">오라클 엘로쿠아에 접속하기</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/connecting-to-salesforce.html">세일즈포스에 연결하기</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-salesforce-object-pardot.html">Pardot에 대한 세일즈 포스 객체 만들기</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms.html">가망 고객 양식 생성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-hubspot.html">HubSpot에서 가망 고객 양식 생성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-marketo.html">Marketo에서 가망 고객 양식 생성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-oracle-eloqua.html">오라클 Eloqua에서 가망 고객 화면 생성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/creating-lead-forms-salesforce.html">세일즈포스에서 가망 고객 양식 생성</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-account-information.html">계정 정보 관리</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-account-settings.html">계정 설정 관리</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-media-sharing-settings.html">미디어 공유 설정 관리</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-profile-information.html">프로파일 정보 관리</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/managing-users.html">사용자 관리</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/styling-players.html">플레이어 스타일링</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/reviewing-player-event-data-in-google-analytics.html">Google 애널리틱스에서 플레이어 이벤트 데이터 검토</a></li>
-                  
-                
-                  
-                    <li><a href="/admin/viewing-billing-information.html">청구 정보 조회</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/release-notes/index.html">릴리즈 노트 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/release-notes/2020.html">2020 </a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html">지원 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">브라이트코브 시스템 상태 페이지 보기</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">영업팀에 문의</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">지원 사례 열기</a></li>
-                  
-                
-              </ul>
-            
-          
-      </nav>
-    </div>
-    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
-  <!-- bootstrap layout -->
-
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="네비게이션 메뉴"/></p>
-<ul id="in_prod_nav" class="pager" style="display: none;">
-  <li><a href="#"><img src="/assets/images/feather/chevron-left.svg" alt="뒤로"/></a></li>
-  <li>&nbsp;&nbsp;&nbsp;&nbsp;비콘 설명서&nbsp;&nbsp;&nbsp;&nbsp;</li>
-  <li><a href="#"><img src="/assets/images/feather/chevron-right.svg" alt="앞으로"/></a></li>
-</ul>
-
-<!-- search bar -->
-<div id="nav-search-box" style="margin-top: 1rem;"></div>
-<!-- in-page navigation for narrow screens -->
-<details class="centered-inpage-nav" id="centered_inpage_nav">
-  <summary><h6 class="toc">페이지 내용</h6></summary>
-  <nav id="centered_toc"></nav>
-  <ul id="centered_in_page_toc" class="list-none"></ul>
-</details>
-<!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="새 탭에서 열기" style="margin-top:4em;"/></a>
-
-
-
-  
-    
-
+---
+title: Oracle Eloqua에서 리드 양식 생성
+parent: Administering Accounts
+description: In this topic you will learn how to create an Oracle Eloqua form that can be used to capture lead data during video playback. 
+---
 
 <article class="bcls-article">
-  <h1>오라클 Eloqua에서 가망 고객 화면 생성</h1>
-  <summary>이 항목에서는 비디오 재생 중에 리드 데이터를 캡처하는 데 사용할 수있는 Oracle Eloqua 양식을 만드는 방법을 배웁니다.</summary>
+  <h1>Oracle Eloqua에서 리드 양식 생성</h1>
+  <summary>{{ page.description }}</summary>
   <section class="bcls-section">
-    <p>브라이트코브 캠페인은 동영상 재생 중에 시청자 정보를 캡처할 수 있는 리드 양식을 만들 수 있는 기능을 제공합니다. 양식을 사용하면 필요한 필드 (표시 또는 숨김) 를 포함 할 수 있으며 점진적 프로파일 링 (사용 가능한 경우) 과 같은 기능을 활용할 수 있습니다. 리드 데이터는 Eloqua로 전송되고 처리됩니다.</p>
+    <p>브라이트코브 Campaign은 동영상 재생 중에 시청자 정보를 캡처할 수 있는 리드 양식을 만들 수 있는 기능을 제공합니다. 양식을 사용하면 필요한 필드 (표시 또는 숨김) 를 포함시킬 수 있으며 프로그레시브 프로파일링 (사용 가능한 경우) 과 같은 기능을 활용할 수 있습니다. 리드 데이터는 Eloqua로 전송되고 처리됩니다.</p>
   </section>
   <section class="bcls-section">
     <h2 id="form">Eloqua에서 양식 만들기</h2>
-    <p>Eloqua는 뷰어 정보를 캡처하는 데 사용할 수있는 양식을 생성하는 기능을 제공합니다. 생성된 HTML 양식은 브라이트코브 캠페인 내에서 리드 양식을 만들 때 사용됩니다. 그런 다음 캡처된 데이터를 향후 통신을 사용자 지정하는 데 사용할 수 있습니다. 아래 단계에서는 이름, 성 및 이메일 주소를 캡처하는 간단한 양식을 만듭니다. Eloqua 양식에 대한 자세한 내용은<a href="https://docs.oracle.com/cloud/latest/marketingcs_gs/OMCAA/Help/Forms/Forms.htm">Eloqua 설명서를 참조하십시오</a> .</p>
+    <p>Eloqua는 뷰어 정보를 캡처하는 데 사용할 수있는 양식을 생성하는 기능을 제공합니다. 생성된 양식 HTML은 브라이트코브 캠페인 내에서 리드 양식을 만들 때 사용됩니다. 그런 다음 캡처된 데이터를 향후 통신을 사용자 지정하는 데 사용할 수 있습니다. 아래 단계에서는 이름, 성 및 이메일 주소를 캡처하는 간단한 양식이 만들어집니다. Eloqua 양식에 대한 자세한 내용은<a href="https://docs.oracle.com/cloud/latest/marketingcs_gs/OMCAA/Help/Forms/Forms.htm"> Eloqua 문서를 참조하십시오</a> .</p>
     <ol class="bcls-tasklist-restart">
       <li>Eloqua 계정에 로그인합니다.</li>
-      <li><strong>자산 &gt; </strong><strong>양식으로</strong>이동한 다음<strong>양식 만들기를</strong>클릭합니다. 양식 템플릿 선택기가 열립니다.</li>
-      <li><strong>빈 양식을</strong>클릭한 다음<strong>선택을</strong>클릭합니다.</li>
-      <li>왼쪽 탐색에서 [ <strong>필드 그룹</strong> ] 패널을 확장합니다.</li>
-      <li>[ <strong>필드 그룹</strong> ] 패널에서 [ <strong>기본 연락처 정보</strong> ] 를 클릭하고 양식 템플릿으로 드래그합니다.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 드래그 요소" src="/assets/images/admin/eloqua-form-add-fields.png"/></figure>
+      <li><strong>에셋</strong> &gt; <strong>양식으로</strong>이동한 다음 양식<strong>만들기를 클릭합니다</strong> . 양식 템플릿 선택기가 열립니다.</li>
+      <li><strong>빈 양식을</strong>클릭한 다음<strong>선택을 클릭합니다</strong> .</li>
+      <li>왼쪽 탐색에서<strong>필드 그룹</strong>패널을 확장합니다.</li>
+      <li><strong>필드 그룹</strong>패널에서<strong>기본 연락처 정보를</strong>클릭하고 양식 템플릿으로 드래그합니다.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua drag element" src="/assets/images/admin/eloqua-form-add-fields.png" /></figure>
       </li>
-      <li>필드가 양식에 추가되었는지 확인합니다.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 양식 필드" src="/assets/images/admin/eloqua-form-fields-on-form.png"/></figure>
+      <li>필드가 양식에 추가되었는지 확인하십시오.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua form fields" src="/assets/images/admin/eloqua-form-fields-on-form.png" /></figure>
       </li>
-      <li>기본적으로 필드는 필드 병합을 사용하여 추가됩니다. 이로 인해 Brightcove Campaign에서 사용할 때 필드에 이상한 텍스트가 나타납니다. 필드 병합을 제거하려면<strong>이름</strong>필드를 클릭하여 선택하십시오.</li>
-      <li>왼쪽 탐색 패널에서<strong>일반 특성</strong>섹션을 찾아<strong>미리 채우기 필드 데이터</strong>특성을<strong>없음으로</strong>설정합니다.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 양식 속성" src="/assets/images/admin/eloqua-form-pre-pop.png"/></figure>
+      <li>기본적으로 필드는 필드 병합을 사용하여 추가됩니다. 이로 인해 Brightcove Campaign에서 사용할 때 필드에 이상한 텍스트가 나타납니다. 필드 병합을 제거하려면<strong>이름</strong>필드를 클릭하여 선택합니다.</li>
+      <li>왼쪽 탐색 패널에서<strong>일반 속성</strong>섹션을 찾아 필드 데이터<strong>미리 채우기</strong>속성을<strong>없음으로 설정합니다</strong> .
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua form properties" src="/assets/images/admin/eloqua-form-pre-pop.png" /></figure>
       </li>
-      <li>프로세스를 반복하십시오. <strong>성</strong>과<strong>이메일 주소</strong>필드.</li>
-      <li><strong>저장</strong>을 클릭합니다.</li>
-      <li>양식에 이름을 지정한 다음<strong>저장을</strong>클릭합니다.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 양식 목록" src="/assets/images/admin/eloqua-form-save-form.png"/></figure>
+      <li>에 대한 과정을 반복합니다. <strong>성</strong>그리고<strong>이메일 주소</strong>필드.</li>
+      <li><strong>저장을 클릭합니다</strong> .</li>
+      <li>양식에 이름을 지정한 다음<strong>저장을 클릭합니다</strong> .
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua form list" src="/assets/images/admin/eloqua-form-save-form.png" /></figure>
       </li>
     </ol>
   </section>
   <section class="bcls-section">
     <h2 id="edit">양식 HTML 복사</h2>
-    <p>브라이트코브 캠페인 내에서 양식을 사용하려면 양식 HTML을 복사해야 합니다. 양식 HTML을 복사하려면 다음과 같이 하십시오.</p>
+    <p>브라이트코브 캠페인 내에서 양식을 사용하려면 HTML 양식을 복사해야 합니다. 다음 단계에 따라 HTML 양식을 복사합니다.</p>
     <ol class="bcls-tasklist-restart">
-      <li><strong>작업 양식 &gt; 보기 HTML... 를 클릭합니다.</strong> 양식 HTML이 표시됩니다.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 양식 html" src="/assets/images/admin/eloqua-form-html.png"/></figure>
+      <li><strong>작업 &gt; 양식 HTML 보기... 를 클릭합니다.</strong> HTML 양식이 표시됩니다.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua form html" src="/assets/images/admin/eloqua-form-html.png" /></figure>
       </li>
-      <li>전체 HTML을 클립 보드에 복사합니다. <strong>닫기를</strong>클릭합니다.</li>
-      <li>양식 HTML을 선택한 HTML 편집기에 붙여 넣습니다. 편집기의 코드 서식 지정 기능을 사용하여 쉽게 읽을 수 있도록 코드 서식을 지정할 수 있습니다.</li>
+      <li>전체 HTML을 클립 보드에 복사합니다. <strong>닫기를 클릭합니다</strong> .</li>
+      <li>HTML 양식을 선택한 HTML 편집기에 붙여넣습니다. 편집기의 코드 서식 지정 기능을 사용하여 코드 서식을 지정하여 읽기 쉽도록 할 수 있습니다.</li>
     </ol>
   </section>
   <section class="bcls-section">
-    <h2 id="styleform">양식 스타일 지정</h2>
-    <p>기본적으로 리드 양식이 표시 될 때 양식은 플레이어 위에 투명한 배경에 표시됩니다. CSS를 사용하여 양식에 몇 가지 기본 스타일을 지정하고 싶을 것입니다. 아래 섹션에서는 양식의 스타일을 지정하는 방법에 대한 두 가지 예를 제공합니다. 관련 CSS도 제공됩니다. 표준 색상을 따르거나 추가 필드의 스타일을 처리하도록 CSS를 조정해야 할 수도 있습니다.</p>
+    <h2 id="styleform">양식 스타일링</h2>
+    <p>기본적으로 리드 양식이 표시 될 때 양식은 플레이어 위에 투명한 배경에 표시됩니다. CSS를 사용하여 양식에 몇 가지 기본 스타일을 지정하고 싶을 것입니다. 아래 섹션에서는 양식에 스타일을 지정할 수있는 방법에 대한 두 가지 예를 제공합니다. 관련 CSS도 제공됩니다. 표준 색상을 따르거나 추가 필드의 스타일을 처리하기 위해 CSS를 조정해야 할 수 있습니다.</p>
     <div class="BCL-subsection">
-      <h3>간단한 양식 스타일 예제</h3>
-      <p>이 예는 회색으로 폼의 배경색을 변경하는 CSS를 사용하고 다음과 같이 폼이 나타납니다:</p>
-      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 스타일 양식" src="/assets/images/admin/eloqua-form-simple-styling.png"/></figure>
-      <p>이 스타일링의 경우 양식 HTML <code translate="No">style</code>태그의 맨 위에 다음 CSS를 추가합니다.</p>
+      <h3>간단한 양식 스타일링 예</h3>
+      <p>이 예에서는 CSS를 사용하여 양식의 배경색을 회색으로 변경하면 양식이 다음과 같이 나타납니다.</p>
+      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua styled form" src="/assets/images/admin/eloqua-form-simple-styling.png" /></figure>
+      <p>이 스타일을 지정하려면 양식 HTML <code translate="No">style</code>태그의 맨 위에 다음 CSS를 추가합니다.</p>
       <pre>
-몸 {
-      배경색: rgba (204,204,204,0.9);
-      여백: 0;
-      패딩: 20 픽셀;
-      높이: 100%;
-}
+신체{ background-color: rgba(204,204,204,0.9); margin: 0; padding: 20px; height: 100%; }
   </pre>
-    </div>
-    <div class="BCL-subsection">
-      <h3>고급 양식 스타일 지정 예</h3>
-      <p>이 예제에서는 JavaScript를 사용하여 양식의 배경색을 검정색으로 변경하고 몇 가지 기본 필드 서식을 수행합니다. 양식은 다음과 같이 나타납니다.</p>
-      <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 스타일의 고급 양식" src="/assets/images/admin/eloqua-form-adv-styling.png"/></figure>
-      <p>이 스타일링을 위해 양식 HTML의 맨 아래에 다음 자바 스크립트를 추가합니다.</p>
-      <pre>
-
-&lt;스크립트 &gt;
-  var labels = document.getElementsByClassName ( 'elq-label'),
-      전자 양식 = 문서.쿼리 선택기 ('양식.elq-양식'),
-      submitButton = document.getElementsByClassName ( 'submit-button-style') [0],
-      // titleLable = document.querySelector ( 'label.label'),
-      이름 = 문서.get이름별 ('이름') [0],
-      성 = 문서.항목 이름별 ('성') [0],
-      전자 메일 주소 = 문서.get이름별 ('전자 메일 주소') [0],
-      나는;
-
-  에 대한 (나는 = 0; &lt; 나는.길이 레이블; 나는 ++)
-     {레이블 [i] .setAttribute ('스타일', '디스플레이: 없음; ');}
-
-  속성 ('스타일', '배경색: #333; 높이: 12em; 텍스트 정렬: 가운데; 패딩: 0% 20%; ');
-  // titleLable.setAttribute ( 'style', 'display : none;');
-  제출 버튼.set속성 ('스타일', '높이: 2em; 배경 색상: #337d87; 색상: #fff; 경계:없음; 테두리 반경: .3em; 패딩: .3em .5em; 글꼴 크기: 1em; ');
-  이름.set속성 ('스타일', '여백: .5em; 높이: 2em; 너비: 80%; 패딩 왼쪽: .5em; 글꼴 크기: 1em; 테두리: 없음; 테두리 반경: .3em; ');
-  이름.set속성 ('자리 표시자', '이름');
-  성.set속성 ('스타일', '여백: .5em; 높이: 2em; 너비: 80%; 패딩 왼쪽: .5em; 글꼴 크기: 1em; 테두리: 없음; 테두리 반경: .3em; ');
-  성.set속성 ('자리 표시자', '성');
-  이메일 주소.set속성 ('스타일', '여백: .5em; 높이: 2em; 너비: 80%; 패딩 왼쪽: .5em; 글꼴 크기: 1em; 테두리: 없음; 테두리 반경: .3em; ');
-  이메일 주소.set속성 ('자리 표시자', '이메일');
-&lt;/스크립트 &gt;</pre>
     </div>
   </section>
   <section class="bcls-section">
     <h2 id="createform">브라이트코브 캠페인 리드 양식 만들기</h2>
-    <p>양식을 만들고 스타일을 지정하면 리드 양식을 만들 때 브라이트코브 캠페인 내에서 양식 HTML이 사용됩니다. 가망 고객 화면 생성에 대한 자세한 내용은<a href="/admin/creating-lead-forms.html">가망 고객 화면 생성을</a>참조하십시오.</p>
+    <p>양식을 만들고 스타일을 지정하면 리드 양식을 만들 때 브라이트코브 캠페인 내에서 HTML 양식이 사용됩니다. 가망 고객 양식 생성에 대한 자세한 내용은 가망 고객 양식<a href="/admin/creating-lead-forms.html">생성을 참조하십시오</a> .</p>
   </section>
   <section class="bcls-section">
-    <h2 id="formdata">Eloqua 양식 데이터의 유효성 검사</h2>
-    <p>양식 데이터가 Eloqua로 전달되었는지 확인하는 방법에는 여러 가지가 있습니다. Eloqua에서 양식 데이터를 보려면 다음 단계를 수행하십시오.</p>
+    <h2 id="formdata">Eloqua에서 양식 데이터 유효성 검사</h2>
+    <p>양식 데이터가 Eloqua에 전달되었는지 확인하는 방법에는 여러 가지가 있습니다. Eloqua에서 양식 데이터를 보려면 다음 단계를 따르십시오.</p>
     <ol class="bcls-tasklist-restart">
       <li>Eloqua 계정에 로그인합니다.</li>
-      <li><strong>자산 &gt; </strong><strong>화면으로 이동합니다.</strong></li>
+      <li><strong>에셋</strong> &gt; <strong>양식으로 이동합니다</strong> .</li>
       <li>왼쪽 탐색에서<strong>모든 파일</strong>링크를 클릭하여 모든 양식을 표시합니다.</li>
-      <li>양식 이름을 두 번 클릭하여 엽니다.</li>
-      <li><strong>작업 제출 데이터 &gt; 보기... 를 클릭합니다.</strong> 양식 데이터가 표시됩니다.
-        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua 리드 양식 데이터" src="/assets/images/admin/eloqua-form-data.png"/></figure>
+      <li>양식 이름을 두 번 클릭하여 엽니 다.</li>
+      <li><strong>작업 &gt; 제출 데이터 보기... 를 클릭합니다.</strong> 양식 데이터가 표시됩니다.
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="eloqua lead form data" src="/assets/images/admin/eloqua-form-data.png" /></figure>
       </li>
     </ol>
   </section>
 </article>
-
-<!-- complete bootstrap layout -->
-    </div>
-    <div class="col-sm-2 right-side-bar">
-      
-      <nav class="right-side-nav" id="right_side_nav">
-        <h6 class="toc">페이지 내용</h6>
-        <ul id="in_page_nav" class="list-none"></ul>
-      </nav>
-      
-    </div>
-  </div>
-</div>
-
-<hr>
-<footer class="bcls-footer" role="contentinfo">  <div class="row">
-    <div class="region region-footer-top-center col-md-12">
-      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
-
-        <h2>브라이트코브 지원</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://status.brightcove.com">시스템 상태</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">고객 지원 문의</a>
-          </li>
-          <li>
-            <a href="https://support.brightcove.com/">문서화</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
-
-        <h2>교육</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">온라인 강좌</a>
-          </li>
-          <li>
-            <a href="https://studio.support.brightcove.com/training/register-training.html">강좌 등록</a>
-          </li>
-          <li>
-            <a href="https://university.brightcove.com/">브라이트코브 대학교</a>
-          </li>
-        </ul>
-
-      </nav>
-      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
-
-        <h2>Brightcove</h2>
-
-        <ul class="menu">
-          <li>
-            <a href="https://www.brightcove.com">브라이트코브닷컴</a>
-          </li>
-          <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">연락처</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div class="row">
-    <div class="region region-footer-bottom-center col-md-12">
-      <div class="bcls-copyright footer-menu">
-        <table>
-          <tr>
-            <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> 브라이트코브 Inc. 모든 판권 소유.</div>
-            </td>
-            <td><a href="https://www.brightcove.com/en/legal/privacy">개인 정보 보호</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">이용 약관</a></td>
-            <td>
-              <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script>
-      
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-  
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
-  
-
-</script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
-  
-  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
-  <script src="/assets/js/sites_nav.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
-  <script src="/assets/js/feedback.js"></script>
-  
-  <script src="/assets/js/sajari-search-foot.js"></script>
-  
-  <!-- <script src="/assets/js/sajari-index.js"></script> -->
-  <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
-    </style>
-
-</body>
-
-</html>
